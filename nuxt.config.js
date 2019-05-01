@@ -80,6 +80,6 @@ export default {
   },
   server: {
     port: process.env.PORT || 3333, // default: 3000
-//    host: process.env., // default: localhost
+    host: '0.0.0.0', // default: localhost
   },
 }
