@@ -1,4 +1,6 @@
 import pkg from './package'
+require('dotenv').config()
+
 const environment = {
   API_URL: '[http://dummy.restapiexample.com/api/v1]'
 }
@@ -75,5 +77,9 @@ export default {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  server: {
+    port: process.env.PORT || 3333, // default: 3000
+//    host: process.env., // default: localhost
+  },
 }

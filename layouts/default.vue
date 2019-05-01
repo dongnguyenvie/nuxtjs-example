@@ -52,4 +52,14 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+.error {
+  font-size: 0.75rem;
+  /* line-height: 1; */
+  display: none;
+  /* margin-left: 14px; */
+  /* margin-top: -1.6875rem; */
+  /* margin-bottom: 0.9375rem; */
+  display: block;
+  color: #f57f6c;
+}
 </style>

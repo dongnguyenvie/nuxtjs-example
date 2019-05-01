@@ -27,3 +27,14 @@ export const userService = {
       })
   }
 }
+
+export const ApiManager = {
+  getTextLorem({ quantity, type = 'array' }, fnRes, fnErr) {
+    axios
+      .get(
+        `https://baconipsum.com/api/?type=all-meat&paras=${quantity}&start-with-lorem=1&format=${type}`
+      )
+      .then(res => fnRes(res.data))
+      .catch(err => fnErr(err))
+  }
+}

@@ -1,14 +1,11 @@
-import Cookies from 'js-cookie'
-import Cookie from 'cookie'
-import _ from 'lodash'
-
-const pagePublic = ['login', 'index']
+// import Cookies from 'js-cookie'
+// import Cookie from 'cookie'
+// import _ from 'lodash'
 
 export default function({ store, redirect, req, next, app, route, error }) {
-  const { _token, _user } = Cookie.parse(req.headers.cookie)
-  if (_.includes(pagePublic, route.name)) {
-    if (!_token) {
-      return redirect('/home')
+  if (process.server) {
+    if (!store.state.auth.token) {
+      return redirect('/')
     }
   }
 }

@@ -46,7 +46,7 @@ export const mutations = {
     Cookies.set('_token', token)
   },
   registerFailure(state, error) {
-    console.log(state)
+    // console.log(state)
     // state.status = {}
   }
 }

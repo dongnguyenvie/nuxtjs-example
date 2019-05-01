@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center pt-5">
+    <div class="row justify-content-center pt-5" @keyup.enter="hanleSubmit()">
       <div class="col-md-8">
         <div class="card">
           <div class="card-header">Register</div>
@@ -38,6 +38,7 @@
             <div class="form-group row justify-content-end">
               <div class="btn btn-primary px-5 mr-5" @click="hanleSubmit">Submit</div>
             </div>
+            <div class="alert alert-danger" v-if="error">Have an error please try again later</div>
           </div>
         </div>
       </div>
@@ -50,6 +51,16 @@ import { mapActions } from 'vuex'
 import { required, email } from 'vuelidate/lib/validators'
 
 export default {
+  head: {
+    title: 'Coders-tokyo || register page',
+    meta: [
+      {
+        hid: 'this is nuxjs project example',
+        name: 'this is nuxjs project example',
+        content: 'GitHub is home to over 36 million developers working together to host and review code, manage projects, and build software together. ... nuxt web-app isomorphic vue universal ssr pwa vuex vue-router. ... Nuxt.js Hacker News.'
+      }
+    ]
+  },
   data() {
     return {
       user: {
@@ -57,7 +68,8 @@ export default {
         password: ''
       },
       flag: false,
-      rePassword: ''
+      rePassword: '',
+      error: false
     }
   },
   methods: {
@@ -67,14 +79,18 @@ export default {
     hanleSubmit() {
       const { email, password } = this.user
       this.$v.$touch()
-      console.log(this.$v.$error)
+      // console.log(this.$v.$error)
       if (this.$v.$error) return
       if (password !== this.rePassword) {
         this.flag = true
       }
-      this.actionRegister(this.user).then(e => {
-        this.$router.push({ name: 'home' })
-      })
+      this.actionRegister(this.user)
+        .then(e => {
+          this.$router.push({ name: 'index' })
+        })
+        .catch(err => {
+          this.error = true
+        })
     }
   },
   validations: {
@@ -90,23 +106,6 @@ export default {
     rePassword: {
       required
     }
-  },
-  created() {
-    this.$store.state.auth.token = 14
-  },
-  middleware: 'auth'
+  }
 }
 </script>
-
-<style>
-.error {
-  font-size: 0.75rem;
-  /* line-height: 1; */
-  display: none;
-  /* margin-left: 14px; */
-  /* margin-top: -1.6875rem; */
-  /* margin-bottom: 0.9375rem; */
-  display: block;
-  color: #f57f6c;
-}
-</style>

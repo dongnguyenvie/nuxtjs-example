@@ -1,6 +1,6 @@
 
 // const API_BASE_URL = 'https://reqres.in/api'
-const API_BASE_URL = 'http://localhost:3001/api/v1'
+const API_BASE_URL = 'https://crawl-ytb.herokuapp.com/api/v1'
 const axiosConfig = (axios) => {
     axios.defaults.baseURL = API_BASE_URL
     axios.defaults.headers.post['Content-Type'] = 'application/json'
