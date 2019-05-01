@@ -1,6 +1,5 @@
-# nuxt-example-1
-## redux saga example
-[LIVE DEMO](https://dongnguyenvie.github.io/reactjs-redux-saga-example)
+# nuxt example
+[LIVE DEMO](https://nuxtjs-example.herokuapp.com/)
 ![IMAGES DEMO](https://i.imgur.com/0b3VtPu.jpg)
 > My groundbreaking Nuxt.js project
 
